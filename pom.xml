@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jhonatan</groupId>
-	<artifactId>pontta-api_v1</artifactId>
+	<artifactId>pontta-api_v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pontta-api_v1</name>
+	<name>pontta-api_v2</name>
 	<description/>
 	<url/>
 	<licenses>

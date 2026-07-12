@@ -50,6 +50,8 @@ spring.datasource.username=postgres
 spring.datasource.password=SENHA
 ```
 
+Caso necessário, execute o arquivo em `src/main/java/com/jhonatan/pontta_api_v2/infrastructure/schema.sql` que contém a criação de todas as tabelas do projeto.  
+
 ## Log de versões
 ### v1.0
 - Estrutura inicial da API
@@ -58,3 +60,8 @@ spring.datasource.password=SENHA
 - Implementação das entidades Cliente, Produto e Pedido
 - Criação dos CRUDs principais
 - Primeiros relacionamentos utilizando JPA/Hibernate
+
+### v2.0
+- Refatoração focado no clean architecture
+- Melhoria em DTO de response e request
+- Adição de valores padrões
