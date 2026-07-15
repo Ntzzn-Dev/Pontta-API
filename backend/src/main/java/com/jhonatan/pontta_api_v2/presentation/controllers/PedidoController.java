@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.jhonatan.pontta_api_v2.application.dto.request.PedidoProdutoRequestDTO;
 import com.jhonatan.pontta_api_v2.application.dto.request.PedidoRequestDTO;
@@ -22,6 +23,7 @@ import com.jhonatan.pontta_api_v2.domain.entities.PedidoProdutoId;
 
 @RestController
 @RequestMapping("/pedidos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PedidoController {
     private final PedidoService pedidoService;
     private final PedidoProdutoService pedidoProdutoService;

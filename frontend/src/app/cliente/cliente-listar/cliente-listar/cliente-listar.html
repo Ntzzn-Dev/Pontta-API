@@ -1,0 +1,17 @@
+<p>Lista de Clientes</p>
+
+@if (clientes$ | async; as clientes) {
+    @for (cliente of clientes; track cliente.id) {
+        <div>
+            <label>{{ cliente.nome }}</label><br>
+            <label>{{ cliente.contato }}</label><br>
+            <button (click)="update(cliente.id)">Editar</button>
+        </div><br>
+    } @empty {
+        <li>Nenhum cliente encontrado.</li>
+    }
+} @else {
+    <p>Carregando...</p>
+}
+
+<button mat-raised-button color="primary" (click)="create()">Cadastrar</button>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.jhonatan.pontta_api_v2.application.dto.request.ClienteRequestDTO;
 import com.jhonatan.pontta_api_v2.application.services.ClienteService;
@@ -17,6 +18,7 @@ import com.jhonatan.pontta_api_v2.domain.entities.Cliente;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
     private final ClienteService clienteService;
 

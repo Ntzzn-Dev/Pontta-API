@@ -1,0 +1,18 @@
+<h1>PRODUTOS</h1>
+<button mat-raised-button (click)="create()">Cadastrar</button>
+<h2>Lista de produtos:</h2>
+
+@if (produtos$ | async; as produtos){
+    @for (prod of produtos; track prod.id) {
+        <div>
+            <label>Nome: {{prod.nome}}</label><br>
+            <label>Categoria: {{prod.categoria}}</label><br>
+            <label>Preco: R${{prod.preco}}</label><br>
+            <button mat-raised-button (click)="update(prod.id)">EDIT</button>
+        </div><br>
+    } @empty{
+        <p>Sem produtos cadastrados</p>
+    }
+} @else {
+    <p>Carregando...</p>
+}

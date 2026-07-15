@@ -65,3 +65,8 @@ Caso necessário, execute o arquivo em `src/main/java/com/jhonatan/pontta_api_v2
 - Refatoração focado no clean architecture
 - Melhoria em DTO de response e request
 - Adição de valores padrões
+
+### v3.0
+- Adição do frontend para tratamento da API
+- Criação do CRUD visual de Produtos e Clientes
+- Integração do projeto com Angular
