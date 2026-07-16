@@ -1,6 +1,7 @@
 package com.jhonatan.pontta_api_v2.application.dto.response;
 
 public class ProdutoEmPedidoResponseDTO {
+    private Long idProduto;
     private String nomeProduto;
     private String categoriaProduto;
     private Double valorUnitario;
@@ -39,5 +40,11 @@ public class ProdutoEmPedidoResponseDTO {
     }
     public void setValorParcial(Double valorParcial) {
         this.valorParcial = valorParcial;
+    }
+    public Long getIdProduto() {
+        return idProduto;
+    }
+    public void setIdProduto(Long idProduto) {
+        this.idProduto = idProduto;
     }
 }

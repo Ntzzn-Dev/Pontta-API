@@ -54,10 +54,8 @@ export class ProdutoCadastrarEditar implements OnInit{
   }
 
   excluir(id: number){
-    this.produtoService.delete(id).subscribe(
-      () => {
-        this.router.navigateByUrl("/produtos");
-      }
-    )
+    this.produtoService.delete(id).subscribe(() => {
+      this.router.navigateByUrl("/produtos");
+    });
   }
 }

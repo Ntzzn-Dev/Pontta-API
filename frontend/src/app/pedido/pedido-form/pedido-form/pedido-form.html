@@ -1,0 +1,46 @@
+<mat-toolbar>Edição de pedido</mat-toolbar>
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
+    <mat-form-field>
+        <mat-label>Cliente</mat-label>
+
+        <mat-select formControlName="cliente" [compareWith]="compararCliente">
+            @if (clientes$ | async; as clientes) {
+                @for (cliente of clientes; track cliente.id) {
+                    <mat-option [value]="cliente">
+                        {{ cliente.nome }} | {{ cliente.contato }}
+                    </mat-option>
+                } @empty {
+                    <mat-option [value]="0">
+                        Sem Clientes
+                    </mat-option>
+                }
+            } @else {
+                <mat-option [value]="0">
+                    Carregando...
+                </mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button>Salvar</button>
+        <button type="button" mat-raised-button routerLink="/pedidos">Cancelar</button>
+    </div>
+</form>
+
+<h2>Produtos</h2>
+@if (produtos$ | async; as produtos){
+    @for (prod of produtos; track prod.id) {
+        <div>
+            <label>Nome: {{prod.nome}}</label><br>
+            <label>Categoria: {{prod.categoria}}</label><br>
+            <label>Preco: R${{prod.preco}}</label><br>
+            <b><label>Quantidade: {{ this.idsProdutos.filter(i => i === prod.id).length}} </label></b><br>
+            <button mat-raised-button (click)="removeProduto(prod.id)">-</button>
+            <button mat-raised-button (click)="addProduto(prod.id)">+</button>
+        </div><br>
+    } @empty{
+        <p>Sem produtos cadastrados</p>
+    }
+} @else {
+    <p>Carregando...</p>
+}

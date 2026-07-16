@@ -16,7 +16,7 @@
     <div>
         <button mat-raised-button [disabled]="!formGroup.valid">Salvar</button>
         @if(this.prod && this.prod.id){
-            <button mat-raised-button (click)="excluir(this.prod.id)">Excluir</button>
+            <button type="button" mat-raised-button color="warn" (click)="excluir(this.prod.id)">Excluir</button>
         }
         <button mat-raised-button routerLink="/produtos">Cancelar</button>
     </div>

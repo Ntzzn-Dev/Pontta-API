@@ -12,6 +12,7 @@ export class ProdutoResolver implements Resolve<Produto> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     const id = route.params["id"];
+    
     if(id){
       return this.produtoService.read(id);
     }

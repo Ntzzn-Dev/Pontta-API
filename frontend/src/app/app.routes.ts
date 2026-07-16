@@ -30,6 +30,18 @@ export const routes: Routes = [
     {
         path: "produtos/editar/:id",
         loadChildren: () => import('./produto/produto-cadastrar-editar/produto-cadastrar-editar-module').then(m => m.ProdutoCadastrarEditarModule)
+    },
+    {
+        path: "pedidos",
+        loadChildren: () => import('./pedido/pedido-listar/pedido-listar-module').then(m => m.PedidoListarModule)
+    },
+    {
+        path: "pedidos/cadastrar",
+        loadChildren: () => import('./pedido/pedido-form/pedido-form-module').then(m => m.PedidoFormModule)
+    },
+    {
+        path: "pedidos/editar/:id",
+        loadChildren: () => import('./pedido/pedido-form/pedido-form-module').then(m => m.PedidoFormModule)
     }
 ];
 @NgModule({

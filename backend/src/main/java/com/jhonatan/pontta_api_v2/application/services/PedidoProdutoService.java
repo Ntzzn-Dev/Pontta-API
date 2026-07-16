@@ -54,6 +54,7 @@ public class PedidoProdutoService {
 
         PedidoProdutoResponseDTO response = new PedidoProdutoResponseDTO();
 
+        response.setId(pedido.getId());
         response.setNomeDoCliente(pedido.getCliente().getNome());
         response.setContatoDoCliente(pedido.getCliente().getContato());
         response.setValorTotalPedido(pedido.getValorTotal());
@@ -64,6 +65,7 @@ public class PedidoProdutoService {
         for(PedidoProduto item : itens){
             ProdutoEmPedidoResponseDTO dto = new ProdutoEmPedidoResponseDTO();
 
+            dto.setIdProduto(item.getProduto().getId());
             dto.setNomeProduto(item.getProduto().getNome());
             dto.setCategoriaProduto(item.getProduto().getCategoria());
             dto.setValorUnitario(item.getProduto().getPreco());

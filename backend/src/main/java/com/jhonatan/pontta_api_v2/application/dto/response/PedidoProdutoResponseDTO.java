@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class PedidoProdutoResponseDTO {
+    private Long id;
     private String nomeDoCliente;
     private String contatoDoCliente;
     private List<ProdutoEmPedidoResponseDTO> produtos;
@@ -13,6 +14,12 @@ public class PedidoProdutoResponseDTO {
     public PedidoProdutoResponseDTO() {
     }
 
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }  
     public String getNomeDoCliente() {
         return nomeDoCliente;
     }
@@ -42,5 +49,5 @@ public class PedidoProdutoResponseDTO {
     }
     public void setDataDoPedido(LocalDateTime dataDoPedido) {
         this.dataDoPedido = dataDoPedido;
-    }    
+    }  
 }

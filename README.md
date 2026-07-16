@@ -70,3 +70,8 @@ Caso necessário, execute o arquivo em `src/main/java/com/jhonatan/pontta_api_v2
 - Adição do frontend para tratamento da API
 - Criação do CRUD visual de Produtos e Clientes
 - Integração do projeto com Angular
+
+### v4.0
+- Criação do ultimo e mais complexo CRUD
+- Exploração de DTOs em angular para respostas diversas do backend
+- Alteração no response do EndPoint de pedido para exibir ids
