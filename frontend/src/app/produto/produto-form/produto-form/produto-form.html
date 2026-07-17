@@ -1,0 +1,21 @@
+<h3>{{ (this.prod && this.prod.id) ? `Editando produto ${this.prod.nome}` : 'Cadastrando produto'}}</h3>
+
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
+    <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" required autocomplete="off">
+        <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="Categoria" formControlName="categoria" required autocomplete="off">
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="Preco em R$" formControlName="preco" required autocomplete="off" type="number">
+    </mat-form-field>
+    <div>
+        <button mat-raised-button [disabled]="!formGroup.valid">Salvar</button>
+        @if(this.prod && this.prod.id){
+            <button mat-raised-button (click)="excluir(this.prod.id)"  type="button">Excluir</button>
+        }
+        <button mat-raised-button routerLink="/produtos" type="button">Voltar</button>
+    </div>
+</form>

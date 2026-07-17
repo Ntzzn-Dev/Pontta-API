@@ -1,46 +1,31 @@
-<mat-toolbar>Edição de pedido</mat-toolbar>
-<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
-    <mat-form-field>
-        <mat-label>Cliente</mat-label>
+<h3>{{ (this.ped && this.ped.id) ? 'Editando pedido' : 'Cadastrando pedido'}}</h3>
 
-        <mat-select formControlName="cliente" [compareWith]="compararCliente">
-            @if (clientes$ | async; as clientes) {
-                @for (cliente of clientes; track cliente.id) {
-                    <mat-option [value]="cliente">
-                        {{ cliente.nome }} | {{ cliente.contato }}
-                    </mat-option>
-                } @empty {
-                    <mat-option [value]="0">
-                        Sem Clientes
-                    </mat-option>
-                }
-            } @else {
-                <mat-option [value]="0">
-                    Carregando...
-                </mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
+        <input type="hidden" placeholder="Id do cliente" formControlName="idCliente" required autocomplete="off">
     <div>
-        <button mat-raised-button>Salvar</button>
-        <button type="button" mat-raised-button routerLink="/pedidos">Cancelar</button>
+        <button mat-raised-button [disabled]="!formGroup.valid">Salvar</button>
+        @if(this.ped && this.ped.id){
+            <button mat-raised-button (click)="excluir(this.ped.id)"  type="button">Excluir</button>
+        }
+        <button mat-raised-button routerLink="/pedidos" type="button">Voltar</button>
     </div>
 </form>
+<br>
 
-<h2>Produtos</h2>
-@if (produtos$ | async; as produtos){
-    @for (prod of produtos; track prod.id) {
-        <div>
-            <label>Nome: {{prod.nome}}</label><br>
-            <label>Categoria: {{prod.categoria}}</label><br>
-            <label>Preco: R${{prod.preco}}</label><br>
-            <b><label>Quantidade: {{ this.idsProdutos.filter(i => i === prod.id).length}} </label></b><br>
-            <button mat-raised-button (click)="removeProduto(prod.id)">-</button>
-            <button mat-raised-button (click)="addProduto(prod.id)">+</button>
-        </div><br>
-    } @empty{
-        <p>Sem produtos cadastrados</p>
+<h2>Clientes</h2>
+<h4>Selecionado: {{this.cliente?.nome}}</h4>
+<section>
+@if(clientes$ | async; as clientes){
+    @for (cliente of clientes; track cliente.id) {
+        <div class="clientes" [ngClass]="{ 'ativo': cliente.id === this.cliente?.id }">
+            <b><label>Nome: {{cliente.nome}} </label></b><br>
+            <label>Email: {{cliente.email}} </label><br>
+            <button mat-raised-button (click)="escolher(cliente)">{{cliente.id === this.cliente?.id ?'Selecionado' : 'Selecionar'}}</button>
+        </div>
+    } @empty {
+        <p>Sem Clientes cadastrados</p>
     }
 } @else {
     <p>Carregando...</p>
 }
+</section>

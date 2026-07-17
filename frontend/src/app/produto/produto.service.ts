@@ -7,28 +7,27 @@ import { Produto } from "./produto.model";
     providedIn: 'root'
 })
 export class ProdutoService{
-    private readonly baseURL = 'http://localhost:8080';
-    private readonly endpoint = 'produtos';
+    private URL = "http://localhost:8080/produtos";
 
-    constructor(private httpCliente: HttpClient ){}
+    constructor(private httpClient: HttpClient){}
 
-    listar() : Observable<Produto[]> {
-        return this.httpCliente.get<Produto[]>(`${this.baseURL}/${this.endpoint}`);
+    list() : Observable<Produto[]>{
+        return this.httpClient.get<Produto[]>(this.URL);
     }
 
-    create(prod : Produto) : Observable<Produto> {
-        return this.httpCliente.post<Produto>(`${this.baseURL}/${this.endpoint}`, prod);
+    create(prod: Produto) : Observable<Produto> {
+        return this.httpClient.post<Produto>(this.URL, prod);
     }
 
-    read(id: number) : Observable<Produto> {
-        return this.httpCliente.get<Produto>(`${this.baseURL}/${this.endpoint}/${id}`);
+    read(id : number) : Observable<Produto> {
+        return this.httpClient.get<Produto>(`${this.URL}/${id}`);
     }
 
-    update(id: number, prod: Produto) : Observable<Produto>{
-        return this.httpCliente.put<Produto>(`${this.baseURL}/${this.endpoint}/${id}`, prod);
+    update(id: number, prod: Produto): Observable<Produto> {
+        return this.httpClient.put<Produto>(`${this.URL}/${id}`, prod);
     }
 
-    delete(id: number) : Observable<Produto> {
-        return this.httpCliente.delete<Produto>(`${this.baseURL}/${this.endpoint}/${id}`);
+    delete(id: number): Observable<Produto>{
+        return this.httpClient.delete<Produto>(`${this.URL}/${id}`);
     }
 }

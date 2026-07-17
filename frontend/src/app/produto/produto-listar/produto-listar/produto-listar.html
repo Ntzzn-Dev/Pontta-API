@@ -1,17 +1,20 @@
-<h1>PRODUTOS</h1>
-<button mat-raised-button (click)="create()">Cadastrar</button>
-<h2>Lista de produtos:</h2>
+<h1>Produtos</h1>
+<button mat-raised-button (click)="cadastrar()">Cadastrar</button>
 
-@if (produtos$ | async; as produtos){
-    @for (prod of produtos; track prod.id) {
+<br>
+<br>
+<br>
+
+@if(produtos$ | async; as produtos){
+    @for (produto of produtos; track produto.id) {
         <div>
-            <label>Nome: {{prod.nome}}</label><br>
-            <label>Categoria: {{prod.categoria}}</label><br>
-            <label>Preco: R${{prod.preco}}</label><br>
-            <button mat-raised-button (click)="update(prod.id)">EDIT</button>
-        </div><br>
-    } @empty{
-        <p>Sem produtos cadastrados</p>
+            <b><label>Nome: {{produto.nome}} </label></b><br>
+            <label>Categoria: {{produto.categoria}} </label><br>
+            <label>Preco: R${{produto.preco}} </label><br>
+            <button mat-raised-button (click)="editar(produto.id)">Editar</button>
+        </div>
+    } @empty {
+        <p>Sem Produtos cadastrados</p>
     }
 } @else {
     <p>Carregando...</p>

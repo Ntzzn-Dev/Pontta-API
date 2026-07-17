@@ -1,0 +1,18 @@
+<h3>{{ (this.cli && this.cli.id) ? `Editando cliente ${this.cli.nome}` : 'Cadastrando cliente'}}</h3>
+
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="formGroup.valid && salvar()" novalidate>
+    <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" required autocomplete="off">
+        <mat-error>Campo obrigatório</mat-error>
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" required autocomplete="off">
+    </mat-form-field>
+    <div>
+        <button mat-raised-button [disabled]="!formGroup.valid">Salvar</button>
+        @if(this.cli && this.cli.id){
+            <button mat-raised-button (click)="excluir(this.cli.id)"  type="button">Excluir</button>
+        }
+        <button mat-raised-button routerLink="/clientes" type="button">Voltar</button>
+    </div>
+</form>

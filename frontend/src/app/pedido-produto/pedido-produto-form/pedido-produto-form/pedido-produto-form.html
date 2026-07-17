@@ -1,0 +1,23 @@
+
+<h2>Produtos</h2>
+<h3>Selecione os produtos do pedido</h3>
+<button mat-raised-button routerLink="/pedidos" type="button">Voltar</button>
+<br><br>
+<section>
+@if(produtos$ | async; as produtos){
+    @for (produto of produtos; track produto.id) {
+        <div class="clientes">
+            <b><label>Nome: {{produto.nome}} </label></b><br>
+            <label>Categoria: {{produto.categoria}} </label><br>
+            <label>Preço: R${{produto.preco}} </label><br>
+            <b><label>{{produtosNoPedido.includes(produto.id) ? 'Selecionado' : ''}}</label></b><br>
+
+            <button mat-raised-button (click)="add(produto.id)">{{produtosNoPedido.includes(produto.id) ? 'Remover do' : 'Adicionar ao'}} pedido</button>
+        </div>
+    } @empty {
+        <p>Sem Produtos cadastrados</p>
+    }
+} @else {
+    <p>Carregando...</p>
+}
+</section>

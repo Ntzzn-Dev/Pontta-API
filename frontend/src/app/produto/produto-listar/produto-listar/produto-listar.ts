@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from '../../produto.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produto } from '../../produto.model';
+import { ProdutoService } from '../../produto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto-listar',
@@ -10,24 +10,24 @@ import { Produto } from '../../produto.model';
   templateUrl: './produto-listar.html',
   styleUrl: './produto-listar.css',
 })
-export class ProdutoListar implements OnInit {
-  produtos$! : Observable<Produto[]>;
-
-  constructor(private produtoService : ProdutoService, private router : Router){}
+export class ProdutoListar {
+  produtos$!: Observable<Produto[]>;
+  
+  constructor(private produtoService: ProdutoService, private router: Router){}
 
   ngOnInit(): void {
     this.listar();
   }
 
   listar(){
-    this.produtos$ = this.produtoService.listar();
+    this.produtos$ = this.produtoService.list();
   }
 
-  create(){
-    this.router.navigateByUrl('produtos/cadastrar');
+  cadastrar(){
+    this.router.navigateByUrl("/produtos/cadastrar")
   }
 
-  update(id: number){
-    this.router.navigateByUrl(`produtos/editar/${id}`);
+  editar(id : number) {
+    this.router.navigateByUrl(`/produtos/editar/${id}`);
   }
 }

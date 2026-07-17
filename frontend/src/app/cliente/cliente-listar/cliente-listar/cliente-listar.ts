@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../../cliente.service';
 import { Observable } from 'rxjs';
 import { Cliente } from '../../cliente.model';
+import { ClienteService } from '../../cliente.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,23 +11,23 @@ import { Router } from '@angular/router';
   styleUrl: './cliente-listar.css',
 })
 export class ClienteListar implements OnInit {
-  clientes$! : Observable<Cliente[]>;
-
-  constructor (private clienteService: ClienteService, private router: Router) { }
+  clientes$!: Observable<Cliente[]>;
+  
+  constructor(private clienteService: ClienteService, private router: Router){}
 
   ngOnInit(): void {
-    this.listarClientes();
+    this.listar();
   }
 
-  listarClientes() {
-    this.clientes$ = this.clienteService.listar();
+  listar(){
+    this.clientes$ = this.clienteService.list();
   }
 
-  create(){
-    this.router.navigate(['/clientes/cadastrar']);
+  cadastrar(){
+    this.router.navigateByUrl("/clientes/cadastrar")
   }
 
-  update(id: number){
-    this.router.navigate([`/clientes/editar/${id}`]);
+  editar(id : number) {
+    this.router.navigateByUrl(`/clientes/editar/${id}`);
   }
 }

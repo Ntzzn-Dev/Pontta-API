@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { PedidoListar } from './pedido-listar/pedido-listar';
 
 const routes: Routes = [
-  {path: '', component: PedidoListar}
+  {
+    path: '',
+    component: PedidoListar
+  }
 ];
 
 @NgModule({

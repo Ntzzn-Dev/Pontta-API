@@ -3,14 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { ClienteListarRoutingModule } from './cliente-listar-routing-module';
 import { ClienteListar } from './cliente-listar/cliente-listar';
-import { MatButtonModule } from '@angular/material/button';
+import { MatAnchor, MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [ClienteListar],
-  imports: [
-    CommonModule,
-    ClienteListarRoutingModule,
-    MatButtonModule
-  ],
+  imports: [CommonModule, ClienteListarRoutingModule, MatAnchor, MatButtonModule],
 })
 export class ClienteListarModule {}

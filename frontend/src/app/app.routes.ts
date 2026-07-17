@@ -1,51 +1,49 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { Home } from './home/home';
-import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     {
-        path: "",
+        path: '',
         component: Home
     },
     {
-        path: "clientes",
-        loadChildren: () => import('./cliente/cliente-listar/cliente-listar-module').then(modulo => modulo.ClienteListarModule)
+        path: 'clientes',
+        loadChildren: () => import('./cliente/cliente-listar/cliente-listar-module').then(m => m.ClienteListarModule)
     },
     {
-        path: "clientes/cadastrar",
-        loadChildren: () => import('./cliente/cliente-cadastrar-editar/cliente-cadastrar-editar-module').then(modulo => modulo.ClienteCadastrarEditarModule)
+        path: 'clientes/cadastrar',
+        loadChildren: () => import('./cliente/cliente-form/cliente-form-module').then(m => m.ClienteFormModule)
     },
     {
-        path: "clientes/editar/:id",
-        loadChildren: () => import('./cliente/cliente-cadastrar-editar/cliente-cadastrar-editar-module').then(modulo => modulo.ClienteCadastrarEditarModule)
+        path: 'clientes/editar/:id',
+        loadChildren: () => import('./cliente/cliente-form/cliente-form-module').then(m => m.ClienteFormModule)
     },
     {
-        path: "produtos",
-        loadChildren: () => import('./produto/produto-listar/produto-listar-module').then(modulo => modulo.ProdutoListarModule)
+        path: 'produtos',
+        loadChildren: () => import('./produto/produto-listar/produto-listar-module').then(m => m.ProdutoListarModule)
     },
     {
-        path: "produtos/cadastrar",
-        loadChildren: () => import('./produto/produto-cadastrar-editar/produto-cadastrar-editar-module').then(modulo => modulo.ProdutoCadastrarEditarModule)
+        path: 'produtos/cadastrar',
+        loadChildren: () => import('./produto/produto-form/produto-form-module').then(m => m.ProdutoFormModule)
     },
     {
-        path: "produtos/editar/:id",
-        loadChildren: () => import('./produto/produto-cadastrar-editar/produto-cadastrar-editar-module').then(m => m.ProdutoCadastrarEditarModule)
+        path: 'produtos/editar/:id',
+        loadChildren: () => import('./produto/produto-form/produto-form-module').then(m => m.ProdutoFormModule)
     },
     {
-        path: "pedidos",
+        path: 'pedidos',
         loadChildren: () => import('./pedido/pedido-listar/pedido-listar-module').then(m => m.PedidoListarModule)
     },
     {
-        path: "pedidos/cadastrar",
+        path: 'pedidos/cadastrar',
         loadChildren: () => import('./pedido/pedido-form/pedido-form-module').then(m => m.PedidoFormModule)
     },
     {
-        path: "pedidos/editar/:id",
+        path: 'pedidos/editar/:id',
         loadChildren: () => import('./pedido/pedido-form/pedido-form-module').then(m => m.PedidoFormModule)
+    },
+    {
+        path: 'pedidos/:id/produtos',
+        loadChildren: () => import('./pedido-produto/pedido-produto-form/pedido-produto-form-module').then(m => m.PedidoProdutoFormModule)
     }
 ];
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule { }

@@ -1,34 +1,33 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, Service } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Cliente } from './cliente.model';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Cliente } from "./cliente.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ClienteService {
-    private baseURL = 'http://localhost:8080'
-    private endpoint = 'clientes'
+export class ClienteService{
+    private URL = "http://localhost:8080/clientes";
 
-    constructor(private httpClient: HttpClient){ }
+    constructor(private httpClient: HttpClient){}
 
-    listar() : Observable<Cliente[]> {
-        return this.httpClient.get<Cliente[]>(`${this.baseURL}/${this.endpoint}`);
+    list() : Observable<Cliente[]>{
+        return this.httpClient.get<Cliente[]>(this.URL);
     }
 
-    create(cli : Cliente): Observable<Cliente> {
-        return this.httpClient.post<Cliente>(`${this.baseURL}/${this.endpoint}`, cli);
+    create(cli: Cliente) : Observable<Cliente> {
+        return this.httpClient.post<Cliente>(this.URL, cli);
     }
 
-    read(id: number) : Observable<Cliente> {
-        return this.httpClient.get<Cliente>(`${this.baseURL}/${this.endpoint}/${id}`);
+    read(id : number) : Observable<Cliente> {
+        return this.httpClient.get<Cliente>(`${this.URL}/${id}`);
     }
 
-    update(cli : Cliente, id: number): Observable<Cliente> {
-        return this.httpClient.put<Cliente>(`${this.baseURL}/${this.endpoint}/${id}`, cli);
+    update(id: number, cli: Cliente): Observable<Cliente> {
+        return this.httpClient.put<Cliente>(`${this.URL}/${id}`, cli);
     }
 
-    delete(id: number) : Observable<Cliente> {
-        return this.httpClient.delete<Cliente>(`${this.baseURL}/${this.endpoint}/${id}`);
+    delete(id: number): Observable<Cliente>{
+        return this.httpClient.delete<Cliente>(`${this.URL}/${id}`);
     }
 }

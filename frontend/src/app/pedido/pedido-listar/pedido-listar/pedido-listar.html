@@ -1,21 +1,22 @@
 <h1>Pedidos</h1>
-<button mat-raised-button (click)="create()">Cadastrar</button>
-<h2>Lista de pedidos: </h2>
-@if (pedidos$ | async; as pedidos){
-    @for(pedido of pedidos; track pedido.id){
+<button mat-raised-button (click)="cadastrar()">Cadastrar</button>
+
+<br>
+<br>
+<br>
+
+@if(pedidos$ | async; as pedidos){
+    @for (pedido of pedidos; track pedido.id) {
         <div>
-            <h3 style="margin: 0;">Cliente</h3>
-            <div style="margin-left: 10px;">
-                <label>Cliente: {{pedido.cliente.nome}}</label><br>
-                <label>Contato: {{pedido.cliente.contato}}</label>
-            </div>
-            <h4 style="margin: 0;">Dados</h4>
-            <label>Data do pedido: {{pedido.dataPedido | date:'dd/MM/yyyy HH:mm' }} </label><br>
-            <label>Valor total: R${{pedido.valorTotal}} </label><br>
-            <button mat-raised-button (click)="update(pedido.id)">Visualizar</button>
+            <b><label>CLIENTE:</label></b><br>
+            <label>Nome: {{pedido.cliente.nome}} </label><br>
+            <label>Email: {{pedido.cliente.email}} </label><br>
+            <label>Data: {{pedido.dataPedido | date: 'dd/MM/yyyy HH:mm'}} </label><br>
+            <button mat-raised-button (click)="editar(pedido.id)">Editar</button>
+            <button mat-raised-button (click)="addProd(pedido.id)">Adicionar Produtos</button>
         </div>
     } @empty {
-        <p>Sem pedidos</p>   
+        <p>Sem Pedidos cadastrados</p>
     }
 } @else {
     <p>Carregando...</p>
